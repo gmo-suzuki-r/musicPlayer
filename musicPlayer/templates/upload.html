@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block content %}
+<div class="container">
+    <form action="{% url 'upload' %}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="album_title" class="form-label">Album Title</label>
+            <p>{% render_field form.album_title class='form-control' %}</p>
+        </div>
+        <div class="mb-3">
+            <label for="artist" class="form-label">Artist</label>
+            <p>{% render_field form.artist class='form-control' %}</p>
+        </div>
+        <div class="mb-3">
+            <label for="album_jacket" class="form-label">Album Jacket</label>
+            <p>{% render_field form.album_jacket class='form-control' %}</p>
+        </div>
+        <div class="mb-3">
+            <label for="audio_file" class="form-label">Audio File</label>
+            <p>{% render_field form.audio_file multiple='' class='form-control' %}</p>
+        </div>
+        <div class="mb-3">
+            <label for="song_lyric" class="form-label">Song Lyric</label>
+            <p>{% render_field form.song_lyric class='form-control' %}</p>
+        </div>
+        <button type="submit" class="btn btn-primary">Upload</button>
+    </form>
+</div>
+{% endblock content %}

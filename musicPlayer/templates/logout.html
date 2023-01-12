@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<p class="text-center">ログアウトしました</p>
+<a href="{% url 'login' %}">
+    <p class="text-center">ログイン画面へ戻る</p>
+</a>
+{% endblock content %}

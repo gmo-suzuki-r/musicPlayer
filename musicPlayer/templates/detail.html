@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block content %}
+<div class="container">
+    <div class="">
+        <img class="d-block mx-auto mb-5 shadow" src="{{ album.album_jacket.url }}" alt="" width="500" height="500">
+        <audio controlslist="nodownload" controls class="d-block mx-auto m-5">
+            <source src="{{ album.audio_file.url }}">
+        </audio>
+        <div class="d-flex justify-content-center">
+            <div class="ms-5 mt-3" style="width: 30%;">
+                <p>Title：{{ album.album_title }}</p>
+                <p> Artist：{{ album.artist }}</p>
+                <a href="#" class="btn btn-lg btn-success" tabindex="-1" role="button"
+                    aria-disabled="true">ストリーミング、購入はこちらから</a>
+                <a href="{% url 'delete' album.pk %}" class="btn btn-danger mt-2" tabindex="-1" role="button"
+                    aria-disabled="true">Delete</a>
+            </div>
+            <div class="text-start ms-5">{{ album.song_lyric|linebreaksbr}}</div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
